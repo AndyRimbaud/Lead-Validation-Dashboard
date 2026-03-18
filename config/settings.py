@@ -11,23 +11,21 @@ DATA_DIR = BASE_DIR / "data"
 LEAD_SCORING_PATH = DATA_DIR / "lead_scoring.xlsx"
 PLAN_FINANCIERO_PATH = DATA_DIR / "plan_financiero.xlsx"
 
-# Expected columns for Data Validation
-# Note: Ensure these match the actual headers in your .xlsx files (normalized)
+# -------------------------------------------------------------------------
+# DATA VALIDATION SCHEMA
+# -------------------------------------------------------------------------
+
+# Expected columns for Lead Data (After Merge & Normalization)
+# Solo exigimos las columnas críticas para que el dashboard y el funnel funcionen.
 EXPECTED_LEAD_COLUMNS = [
-    "id",
-    "nombre_tipo",
+    "company_name",    # Renombrado desde "Nombre / Tipo" y "Lead"
     "sector",
-    "contacto_ideal",
     "score",
-    "tier_objetivo"
+    "tier_objetivo",
+    "semaforo"         # Integrado desde la pestaña 2
 ]
 
-EXPECTED_FINANCE_COLUMNS = [
-    "mes",
-    "clientes_acumulativos",
-    "ingresos_cuota_mensual_cliente",
-    "costes_fijos",
-    "costes_variables",
-    "beneficio",
-    "beneficio_acumulado"
-]
+# Expected columns for Financial Data
+# Dejamos un esquema mínimo temporal. En la FASE 3 actualizaremos esto 
+# para que lea la matriz de Escenarios y Proyecciones correctamente.
+EXPECTED_FINANCE_COLUMNS = []
